@@ -1,1 +1,1 @@
-java -jar stxrfish/target/stxrfish-1.0.jar
+java -jar stxrfish/target/stxrfish.jar
