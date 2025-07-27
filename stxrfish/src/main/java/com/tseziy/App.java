@@ -18,12 +18,20 @@ public class App
         String prompt = in.nextLine();
 
         if (prompt.equals("help")) {
-            System.out.println(Colors.GREEN + "list of available commands" + Colors.RESET + ":\nexit\nhelp" + Colors.YELLOW + "\nconnect" + Colors.RESET + "\ndisconnect");
+            System.out.println(Colors.GREEN + "list of available commands" + Colors.RESET + ":\nexit\nhelp" + Colors.YELLOW + "\nconnect" + Colors.RESET + "\ndisconnect\nwconnect\nwdisconnect");
             commandPrompt();
         }
         else if (prompt.equals("connect")) {
             tip();
             parser.parseHTTP();
+            commandPrompt();
+        }
+        else if (prompt.equals("wconnect")) {
+            parser.parseHTTPWindows();
+            commandPrompt();
+        }
+        else if (prompt.equals("wdisconnect")) {
+            parser.disconnectHTTPWindows();
             commandPrompt();
         }
         else if (prompt.equals("disconnect")) {

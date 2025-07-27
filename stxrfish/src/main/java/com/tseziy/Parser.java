@@ -21,6 +21,7 @@ import org.json.JSONObject;
 public class Parser {
     String username = System.getProperty("user.name");
     String saveDir = "/home/" + username + "/.stXrfish";
+    String saveDirWindows = "C:\\Users\\" + username + "\\.stXrfish";
     String fileName = "data.json";
 
     public Parser() {}
@@ -51,6 +52,67 @@ public class Parser {
             fos.close();
 
             String jsonString = new String(Files.readAllBytes(Paths.get(saveDir + "/" + fileName)), StandardCharsets.UTF_8);
+            JSONObject json = new JSONObject(jsonString);
+            JSONArray jsonData = json.getJSONArray("data");
+
+            for (int i = 0; i < jsonData.length(); i++) {
+                JSONObject proxy = jsonData.getJSONObject(i);
+
+                String ip = proxy.getString("ip");
+                String port = proxy.getString("port");
+
+                if(tryToConnectHTTP(ip, port)) {
+                    System.out.println(ip + ":" + port + " good proxy.");
+                    connectHTTP(ip, port);
+                    if (output.exists()) {
+                        boolean deleted = output.delete();
+                        if (deleted) {
+                            System.out.println("temporary data successfully cleared.");
+                        }
+                    }
+                    break;
+                } else {
+                    System.out.println(ip + ":" + port + " bad proxy.");
+                }
+            }
+
+            if (output.exists()) {
+                boolean deleted = output.delete();
+                if (deleted) {
+                    System.out.println("temporary data successfully cleared.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    public void parseHTTPWindows() {
+        String jsonURL = "https://proxylist.geonode.com/api/proxy-list?protocols=http&limit=500&page=1&sort_by=lastChecked&sort_type=desc";
+
+        try {
+            URL proxies = new URL(jsonURL);
+            URLConnection connection = proxies.openConnection();
+            InputStream is = connection.getInputStream();
+            File dir = new File(saveDirWindows);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+
+            File output = new File(dir, fileName);
+            FileOutputStream fos = new FileOutputStream(output);
+
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = is.read(buffer)) != -1) {
+                fos.write(buffer, 0, bytesRead);
+            }
+
+            is.close();
+            fos.close();
+
+            String jsonString = new String(Files.readAllBytes(Paths.get(saveDir + "\\" + fileName)), StandardCharsets.UTF_8);
             JSONObject json = new JSONObject(jsonString);
             JSONArray jsonData = json.getJSONArray("data");
 
@@ -151,6 +213,18 @@ public class Parser {
         }
     }
 
+    @SuppressWarnings("deprecation")
+    public void connectHTTPWindows(String ip, String port) {
+        try {
+            String command = "netsh winhttp set proxy " + ip + ":" + port;
+            Process process = Runtime.getRuntime().exec(command);
+            process.waitFor();
+            System.out.println(ip + ":" + port + " successfully connected to proxy.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void disconnectHTTP() {
         String path = "/etc/environment";
         try {
@@ -165,6 +239,18 @@ public class Parser {
             }
 
             Files.write(Paths.get(path), newLines);
+            System.out.println("succesfully disconnected.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    public void disconnectHTTPWindows() {
+        try {
+            String command = "netsh winhttp reset proxy";
+            Process process = Runtime.getRuntime().exec(command);
+            process.waitFor();
             System.out.println("succesfully disconnected.");
         } catch (Exception e) {
             e.printStackTrace();
