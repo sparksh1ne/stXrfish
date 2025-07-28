@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.tseziy.AppTest" time="0.026" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.tseziy.AppTest" time="0.038" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="/home/sparkshine/.sdkman/candidates/java/21.0.2-tem/lib"/>
-    <property name="sun.java.command" value="/home/sparkshine/stXrfish/stxrfish/target/surefire/surefirebooter13445019057445531245.jar /home/sparkshine/stXrfish/stxrfish/target/surefire 2025-07-27T23-47-46_561-jvmRun1 surefire304070672931036888tmp surefire_011092441253369507064tmp"/>
+    <property name="sun.java.command" value="/home/sparkshine/stXrfish/stxrfish/target/surefire/surefirebooter6901712668834793158.jar /home/sparkshine/stXrfish/stxrfish/target/surefire 2025-07-28T18-28-34_895-jvmRun1 surefire5189962259017754550tmp surefire_011973437383889923855tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/sparkshine/stXrfish/stxrfish/target/test-classes:/home/sparkshine/stXrfish/stxrfish/target/classes:/home/sparkshine/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/sparkshine/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/sparkshine/.m2/repository/org/json/json/20231013/json-20231013.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/sparkshine/stXrfish/stxrfish/target/surefire/surefirebooter13445019057445531245.jar"/>
+    <property name="surefire.real.class.path" value="/home/sparkshine/stXrfish/stxrfish/target/surefire/surefirebooter6901712668834793158.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.2+13-LTS"/>
     <property name="user.name" value="sparkshine"/>
@@ -54,5 +54,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="com.tseziy.AppTest" time="0.005"/>
+  <testcase name="shouldAnswerWithTrue" classname="com.tseziy.AppTest" time="0.003"/>
 </testsuite>
