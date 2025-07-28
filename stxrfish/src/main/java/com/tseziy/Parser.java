@@ -112,7 +112,7 @@ public class Parser {
             is.close();
             fos.close();
 
-            String jsonString = new String(Files.readAllBytes(Paths.get(saveDir + "\\" + fileName)), StandardCharsets.UTF_8);
+            String jsonString = new String(Files.readAllBytes(Paths.get(saveDirWindows + "\\" + fileName)), StandardCharsets.UTF_8);
             JSONObject json = new JSONObject(jsonString);
             JSONArray jsonData = json.getJSONArray("data");
 

@@ -1,1 +1,4 @@
-java -jar stxrfish/target/stXrfish.jar
+@echo off
+cd /d "%~dp0stxrfish\target"
+java -jar stXrfish.jar
+pause
