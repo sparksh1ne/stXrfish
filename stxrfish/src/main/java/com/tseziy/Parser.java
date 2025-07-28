@@ -19,9 +19,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Parser {
-    String username = System.getProperty("user.name");
-    String saveDir = "/home/" + username + "/.stXrfish";
-    String saveDirWindows = "C:\\Users\\" + username + "\\.stXrfish";
+    String home = System.getProperty("user.home");
+    String saveDir = home + "/.stXrfish";
+    String saveDirWindows = home + "\\.stXrfish";
     String fileName = "data.json";
 
     public Parser() {}
