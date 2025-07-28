@@ -124,7 +124,7 @@ public class Parser {
 
                 if(tryToConnectHTTP(ip, port)) {
                     System.out.println(ip + ":" + port + " good proxy.");
-                    connectHTTP(ip, port);
+                    connectHTTPWindows(ip, port);
                     if (output.exists()) {
                         boolean deleted = output.delete();
                         if (deleted) {
